@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './ImageGalleryItem.module.css';
 
 export const ImageGalleryItem = ({ foto, openModal }) => {
@@ -11,4 +12,12 @@ export const ImageGalleryItem = ({ foto, openModal }) => {
       />
     </li>
   );
+};
+ImageGalleryItem.propTypes = {
+  foto: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    webformatURL: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+  }).isRequired,
+  openModal: PropTypes.func.isRequired,
 };
