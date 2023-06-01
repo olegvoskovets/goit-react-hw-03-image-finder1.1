@@ -24,7 +24,10 @@ export class App extends Component {
   };
   async componentDidUpdate(_, predState) {
     const { search, page, per_page } = this.state;
-
+    if (this.state.search === '') {
+      alert('Введіть що небуть у полі пошуку');
+      return;
+    }
     if (predState.search !== search || predState.page !== page) {
       this.setState({ isLoading: true });
       try {

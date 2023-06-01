@@ -23,11 +23,15 @@
   right: 10px;
   width: 20px;
   height: 20px;
+
   border-radius: 50%;
   border: 1px solid white;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-/* .Image {
-  max-width: 800px;
-} */
+.Svg {
+  width: 12px;
+}

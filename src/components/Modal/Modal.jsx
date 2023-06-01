@@ -1,6 +1,7 @@
 //import { PropTypes } from 'prop-types';
 import { Component } from 'react';
 import { createPortal } from 'react-dom';
+import CloseIcon from '@mui/icons-material/Close';
 import css from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal_root');
@@ -39,7 +40,7 @@ export class Modal extends Component {
             className={css.closeBtn}
             onClick={this.closeModal}
           >
-            X
+            <CloseIcon className={css.Svg} />
           </button>
           {this.props.children}
         </div>
