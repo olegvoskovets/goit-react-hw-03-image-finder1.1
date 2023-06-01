@@ -11,6 +11,10 @@ export class Searchbar extends Component {
   };
   onSubmit = e => {
     e.preventDefault();
+    if (this.state.search === '') {
+      alert('Введіть що небуть у полі пошуку');
+      return;
+    }
     this.props.handleSubmit(this.state.search);
     this.setState({ search: '' });
   };

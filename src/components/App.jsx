@@ -23,10 +23,7 @@ export class App extends Component {
   };
   async componentDidUpdate(_, predState) {
     const { search, page, per_page } = this.state;
-    if (this.state.search === '') {
-      alert('Введіть що небуть у полі пошуку');
-      return;
-    }
+
     if (predState.search !== search || predState.page !== page) {
       this.setState({ isLoading: true });
       try {
@@ -37,13 +34,13 @@ export class App extends Component {
           return;
         }
         this.setState(prevState => ({
-          fotos:
-            page !== 1 ? [...prevState.fotos, ...data.hits] : [...data.hits],
+          fotos: [...prevState.fotos, ...data.hits],
           totalHits: data.totalHits,
-          isLoading: false,
         }));
       } catch (error) {
-        this.setState({ error: error.message, isLoading: false });
+        this.setState({ error: error.message });
+      } finally {
+        this.setState({ isLoading: false });
       }
     }
   }
@@ -68,8 +65,13 @@ export class App extends Component {
       error: '',
     });
   };
-  OpenModal = foto => {
+  handleModal = foto => {
     this.setState({ foto });
+  };
+  loaderToogle = () => {
+    this.setState(prevState => ({
+      isLoading: !prevState.isLoading,
+    }));
   };
   render() {
     const {
@@ -88,14 +90,15 @@ export class App extends Component {
     return (
       <div className={css.App}>
         <Searchbar handleSubmit={this.handleSubmit} />
-        <ImageGallery fotos={fotos} openModal={this.OpenModal} />
+        <ImageGallery fotos={fotos} openModal={this.handleModal} />
         {isLoading && <Loader />}
         {showBtn && <Button onClick={this.addPageGallery} />}
         {isEmply && <NoFotos />}
         {error && <Error error={error} />}
         {foto && (
           <Modal
-            onCloseModal={this.OpenModal}
+            onCloseModal={this.handleModal}
+            handleLoader={this.loaderToogle}
             children={
               <img
                 // className={css.Image}
