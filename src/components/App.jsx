@@ -19,7 +19,6 @@ export class App extends Component {
     isLoading: false,
     error: '',
     isEmply: false,
-    //showModal: false,
     foto: '',
   };
   async componentDidUpdate(_, predState) {
@@ -71,7 +70,6 @@ export class App extends Component {
   };
   OpenModal = foto => {
     this.setState({ foto });
-    //this.toggleModal();
   };
   render() {
     const {
@@ -82,7 +80,6 @@ export class App extends Component {
       isEmply,
       error,
       isLoading,
-      showModal,
       foto,
     } = this.state;
 
