@@ -24,7 +24,7 @@ export class Modal extends Component {
   handleBackdrop = event => {
     const { target, currentTarget } = event;
     if (target === currentTarget) {
-      this.props.onCloseModal();
+      this.props.onCloseModal('');
     }
   };
   closeModal = () => {
@@ -40,7 +40,7 @@ export class Modal extends Component {
             className={css.closeBtn}
             onClick={this.closeModal}
           >
-            <CloseIcon className={css.Svg} />
+            <CloseIcon sx={{ fontSize: 12 }} />
           </button>
           {this.props.children}
         </div>

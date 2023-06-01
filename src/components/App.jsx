@@ -19,7 +19,7 @@ export class App extends Component {
     isLoading: false,
     error: '',
     isEmply: false,
-    showModal: false,
+    //showModal: false,
     foto: '',
   };
   async componentDidUpdate(_, predState) {
@@ -70,8 +70,8 @@ export class App extends Component {
     });
   };
   OpenModal = foto => {
-    this.setState({ foto: foto });
-    this.toggleModal();
+    this.setState({ foto });
+    //this.toggleModal();
   };
   render() {
     const {
@@ -96,9 +96,9 @@ export class App extends Component {
         {showBtn && <Button onClick={this.addPageGallery} />}
         {isEmply && <NoFotos />}
         {error && <Error error={error} />}
-        {showModal && (
+        {foto && (
           <Modal
-            onCloseModal={this.toggleModal}
+            onCloseModal={this.OpenModal}
             children={
               <img
                 // className={css.Image}
